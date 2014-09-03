@@ -31,6 +31,7 @@ set nostartofline       " 移動コマンドを使ったとき、行頭に移動
 set mouse=a             " マウス有効化
 set confirm
 set backspace=indent,eol,start
+nnoremap ~ $
 
 " Yank時のクリップボードをデフォルトレジスタとして使用
 if has('unnameplus')
@@ -38,6 +39,7 @@ if has('unnameplus')
 else
     set clipboard& clipboard+=unnamed
 endif
+
 
 
 " ** 表示関係 **
