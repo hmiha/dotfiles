@@ -81,23 +81,11 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texb
 autoload predict-on
 predict-on
 
-#MHR設定(エイリアス群)
 alias -g cdm="cd Dropbox/M1_lecture"
 alias -g gg="open http://google.com"
 
-#function cdls(){
-#  \cd $1;
-#  ls;
-#}
-#alias cd=cdls
-
-#function dvi_prev(){
-# dvipdfmx $1;
-#  open -a/ "Applications/Preview.app" hw6.pdf;
-#}
-#alias dvi=dvi_prev
-#
+#PATH
 #Opencv for python
-export PYTHONPATH=/usr/local/Cellar/opencv/2.4.8.2/lib/python2.7/site-packages:$PYTHONPATH
-
+#export PYTHONPATH=/usr/local/Cellar/opencv/2.4.8.2/lib/python2.7/site-packages:$PYTHONPATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:${PATH}
