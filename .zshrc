@@ -86,6 +86,7 @@ alias -g gg="open http://google.com"
 
 #PATH
 #Opencv for python
-#export PYTHONPATH=/usr/local/Cellar/opencv/2.4.8.2/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=/usr/local/Cellar/opencv/2.4.8.9/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:${PATH}
