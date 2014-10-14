@@ -2,5 +2,5 @@
 ===
 repo for dotfiles
 
-- .vimrc
-- .zshrc
+- vimrc
+- zshrc
