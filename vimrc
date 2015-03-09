@@ -66,17 +66,25 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab 
 
+" 拡張子でタブ幅を変更する
+if expand("%:t") =~ ".*\.html"
+    set expandtab
+    set softtabstop=2
+    set shiftwidth=2
+endif
+
 " ** エンコード **
 set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf-8 
 
-
 " ** NeoBundle導入スクリプト **
 filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
@@ -86,14 +94,21 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+
 
 filetype plugin indent on     " required!
 filetype indent on
 syntax on
-
-" NeoBundleで導入するスクリプト
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'w0ng/vim-hybrid'
 
 " ** NERDTree 設定 **
 let g:NERDTreeShowBookmarks = 1 " ブックマークを最初に表示
@@ -109,7 +124,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 
 " ** カラースキーマ ** 
-colorscheme hybrid  
+"colorscheme solarized
 syntax on
 let g:molokai_original = 1
 let g:rehash256 = 1
