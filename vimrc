@@ -1,10 +1,6 @@
-" ** 参考 ** 
-" http://lambdalisue.hatenablog.com/entry/2013/06/23/071344
-
 augroup MyAutoCmd
     autocmd!
 augroup END
-
 
 " ** 検索関連 ** 
 set hlsearch            " 検索語を強調表示（<C-L>を押すと現在の強調表示を解除する）
@@ -22,7 +18,7 @@ set switchbuf=useopen   " 新しく開く代わりにすでに開いてあるバ
 set showmatch           " 対応するカッコをハイライト表示
 set matchtime=3         " ハイライト表示を3秒
 set autoindent          " オートインデント
-set nowritebackup       " swapとかbackupとかのゴミを産まない(?)
+set nowritebackup       " swapとかbackupとかのゴミを産まない
 set nobackup
 set noswapfile
 set wildmenu            " コマンドライン補完を便利に
@@ -41,8 +37,6 @@ else
 endif
 
 
-
-" ** 表示関係 **
 set list                " 不可視文字の可視化
 set number              " 行番号の表示
 set wrap                " 長いテキストの折り返し
@@ -60,7 +54,6 @@ filetype indent plugin on " ファイル名と内容によってファイルタ�
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:☜ " 不可視文字
 
 
-" ** 大事な大事なTab関連 **
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -78,81 +71,41 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf-8 
 
-" ** NeoBundle導入スクリプト **
-filetype off
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  call neobundle#end()
-endif
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-scripts/Wombat'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'vim-scripts/rdark'
-
 
 filetype plugin indent on     " required!
 filetype indent on
 syntax on
 
-" ** NERDTree 設定 **
-let g:NERDTreeShowBookmarks = 1 " ブックマークを最初に表示
-
-if !argc()
-  autocmd vimenter * NERDTree|normal gg3j
-endif  " 起動と同時にNERDTreeも起動
-
-nmap <silent> <C-e> :NERDTreeToggle<CR>
-" ctrl+eでNERDTreeをトグル起動
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-" ** カラースキーマ ** 
-"colorscheme solarized
 syntax on
 let g:molokai_original = 1
 let g:rehash256 = 1
 set background=dark
 
+if has('vim_starting')
+    set nocompatible               " Be iMproved
 
-" ** スペルチェッカ **
-"set spelllang=en,cjk
-"
-"fun! s:SpellConf()
-"    redir! => syntax
-"    silent syntax
-"    redir END
-"
-"    set spell
-"
-"    if syntax =~? '/<comment\>'
-"        syntax spell default
-"        syntax match SpellMaybeCode /\<\h\l*[_A-Z]\h\{-}\>/ contains=@NoSpell transparent containedin=Comment contained
-"    else
-"        syntax spell toplevel
-"        syntax match SpellMaybeCode /\<\h\l*[_A-Z]\h\{-}\>/ contains=@NoSpell transparent
-"    endif
-"
-"    syntax cluster Spell add=SpellNotAscii,SpellMaybeCode
-"endfunc
-"
-"augroup spell_check
-"    autocmd!
-"    autocmd BufReadPost,BufNewFile,Syntax * call s:SpellConf()
-"augroup END
+    " Required:
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'Shougo/Unite.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'andviro/flake8-vim'
+NeoBundle 'hachibeeDI/python_hl_lvar.vim'
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
